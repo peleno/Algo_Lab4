@@ -30,7 +30,7 @@ def ijones(corridor):
         for letter in current_column:
             prev_columns[letter] = prev_columns.get(letter, 0) + current_column[letter]
     number_of_ways_to_exit = number_of_ways_to_get[0][-1]
-    if width > 1:
+    if height > 1:
         number_of_ways_to_exit += number_of_ways_to_get[-1][-1]
     return number_of_ways_to_exit
 
