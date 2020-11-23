@@ -1,3 +1,6 @@
+from sys import argv
+
+
 def read_input_from_stdin():
     width, height = list(map(int, input().split()))
     words = []
@@ -6,6 +9,14 @@ def read_input_from_stdin():
         words.append(word)
     return words
 
+def read_input_from_file(filename):
+    words = []
+    with open(filename) as file:
+        width, height = list(map(int, file.readline().split()))
+        for _ in range(height):
+            word = file.readline().strip()
+            words.append(word)
+    return words
 
 def ijones(corridor):
     height = len(corridor)
@@ -35,6 +46,11 @@ def ijones(corridor):
     return number_of_ways_to_exit
 
 if __name__ == '__main__':
-    corridor = read_input_from_stdin()
+    print(argv, len(argv))
+    if len(argv) > 1:
+        filename = argv[1]
+        corridor = read_input_from_file(filename)
+    else:
+        corridor = read_input_from_stdin()
     exit_ways = ijones(corridor)
     print(exit_ways)
